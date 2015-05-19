@@ -1,0 +1,10 @@
+exportPattern("^[[:alpha:]]+")
+
+
+import(randomForest)
+import(fda)
+import(wmtsa)
+
+S3method(plot, fRFE)
+S3method(print, fRFE)
+S3method(summary, fRFE)
