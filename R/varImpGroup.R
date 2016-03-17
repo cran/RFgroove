@@ -1,5 +1,5 @@
 varImpGroup <-
-function(object, xdata, ngroups=length(nvarGroup), nvarGroup, idxGroup, groupsNames=names(idxGroup), normalize=(length(unique(nvarGroup))!=1) ) {
+function(object, xdata, ngroups=length(nvarGroup), nvarGroup, idxGroup, groupsNames=names(nvarGroup), normalize=(length(unique(nvarGroup))!=1) ) {
 
 	##
 	## Version 5 - 07-07-14
@@ -71,5 +71,6 @@ function(object, xdata, ngroups=length(nvarGroup), nvarGroup, idxGroup, groupsNa
 	}else{
 		names(IMP) <- groupsNames
 	}
+	class(IMP) <- "importance"
 	return(IMP)
 }

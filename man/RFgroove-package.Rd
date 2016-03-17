@@ -12,8 +12,8 @@ Importance Measure and Selection for Groups of Variables with Random Forests
 \tabular{ll}{
 Package: \tab RFgroove\cr
 Type: \tab Package\cr
-Version: \tab 1.0\cr
-Date: \tab 2015-05-13\cr
+Version: \tab 1.1\cr
+Date: \tab 2016-03-16\cr
 License: \tab GPL (>=2.0)\cr
 }
 

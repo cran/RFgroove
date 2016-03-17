@@ -14,7 +14,7 @@ selectFunctional( FDlist, ydata, normalize=TRUE,
 }
 \arguments{
   \item{FDlist}{
-    A p-dimensional list containing the set of functional varaibles which are matrices of size \eqn{n \times N}.
+    A p-dimensional list containing the set of functional variables which are matrices of size \eqn{n \times N}.
   }
   \item{ydata}{
     The outcome data. Must be a factor for classification.
@@ -58,7 +58,7 @@ selectFunctional( FDlist, ydata, normalize=TRUE,
   data(toyRegFD)
   varSel <- selectFunctional( toyRegFD$FDlist, toyRegFD$Y, normalize=FALSE, 
                               dimensionReductionMethod="fpca", nbasisInit=16, 
-                              verbose=FALSE, ntree=50)
+                              verbose=FALSE, ntree=10)
   summary(varSel)
   plot(varSel)
 }

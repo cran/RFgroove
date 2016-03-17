@@ -6,5 +6,9 @@ import(fda)
 import(wmtsa)
 
 S3method(plot, fRFE)
+S3method(plot, importance)
 S3method(print, fRFE)
 S3method(summary, fRFE)
+
+importFrom("graphics", "abline", "plot", "axis", "barplot", "dotchart", "par", "text")
+importFrom("stats", "mad")

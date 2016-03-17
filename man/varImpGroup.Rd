@@ -8,7 +8,7 @@
 }
 \usage{
 varImpGroup(object, xdata, ngroups = length(nvarGroup), nvarGroup,
-            idxGroup, groupsNames = names(idxGroup), 
+            idxGroup, groupsNames = names(nvarGroup), 
             normalize = (length(unique(nvarGroup)) != 1))
 }
 \arguments{
@@ -25,7 +25,7 @@ varImpGroup(object, xdata, ngroups = length(nvarGroup), nvarGroup,
     The vector of the number of variables in each group.
 }
   \item{idxGroup}{
-    A list of size \sQuote{ngroups} containing the indexes of each groups.
+    A list of size \sQuote{ngroups} containing the indexes of each group starting from 0.
 }
   \item{groupsNames}{
     The group names.
@@ -35,7 +35,7 @@ varImpGroup(object, xdata, ngroups = length(nvarGroup), nvarGroup,
 }
 }
 \value{
-    A vector of the importance for each group.
+    An object of class \sQuote{importance} which is a vector of the importance for each group.
 }
 \references{
     Gregorutti, B., Michel, B. and Saint Pierre, P. (2015). Grouped variable importance with random forests and application to multiple functional data analysis, Computational Statistics and Data Analysis 90, 15-35.
@@ -44,7 +44,7 @@ varImpGroup(object, xdata, ngroups = length(nvarGroup), nvarGroup,
     Baptiste Gregorutti
 }
 \seealso{
-  \code{\link{selectGroup}},\code{\link{selectLevel}},\code{\link{selectFunctional}}
+  \code{\link{selectGroup}},\code{\link{selectLevel}},\code{\link{selectFunctional}},\code{\link{plot.importance}}
 }
 \examples{
   data(toyClassif)

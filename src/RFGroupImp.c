@@ -28,17 +28,12 @@ void predictRegTree(double *x, int nsample, int mdim,
 
 void permuteOOBgroup(double *xdata, int n, int p, int m, int d, int indexTree, int *inbag);
 
-// double runif();
 
 
 
 //
 //  Functions
 //
-
-// double runif(){
-//   return rand()/(double)RAND_MAX;
-// }
 
 
 void zeroInt(int *x, int length) {
@@ -50,7 +45,6 @@ void zeroInt(int *x, int length) {
 void permuteOOBgroup(double *xdata, int n, int p, int m, int d, int indexTree, int *inbag){
 
   if(m+d>p){
-    // printf("Error: m + d must be lower than p\n");
     return;
   }
 
@@ -186,13 +180,7 @@ void predictClassTree(double *x, int n, int mdim, int *treemap,
         k = cbestsplit[(int) x[m + i * mdim] - 1 + k * maxcat] ? treemap[k * 2] - 1 : treemap[1 + k * 2] - 1;
       }
       if(k==-1){
-        // printf("nodestatus[%d]=%d\n", k, nodestatus[k]);
-        // printf("bestvar[%d]=%d, m=%d\n", k, bestvar[k], m);
-        // printf("cat[%d] = %d\n", m, cat[m]);
-        // printf("x[%d]=%.2f\n", m + i * mdim, x[m + i * mdim]);
-        // printf("iteration %d\n", niter);
         return;
-        // exit(1);
       }
       niter++;
     }
@@ -210,7 +198,6 @@ void R_varImpGroup(  double *permutation_measure_group, double *xdata, int *ydat
 {
 
   if(*ngroups==1){
-    // printf("Error: The number of groups must be at least 2\n");
     return;
   }
 
@@ -234,7 +221,6 @@ void R_varImpGroup(  double *permutation_measure_group, double *xdata, int *ydat
   for (j = 0; j < *ngroups; ++j)
     permutation_measure_group[j] = 0;
 
-  // srand(time(NULL));
   GetRNGstate();
   for (indexTree = 0; indexTree < *ntree; ++indexTree){
 
@@ -278,8 +264,6 @@ void R_varImpGroup(  double *permutation_measure_group, double *xdata, int *ydat
         for (k = 0; k < *p; ++k){
           if(currentGroup[k]==1){
             tx[itx] = xdata[i * *p + k];
-            // if(itx > sizeTx)
-            //   printf("Warning!\nitx = %d, tx = %.2f, currentGroup[%d] = %d\n", itx, tx[itx], k, currentGroup[k]);
             itx++;
           }
           if (inbag[indexTree * *n + i]==0 && currentGroup[k]==1)
@@ -398,10 +382,8 @@ void R_varImpGroup_Reg( double *permutation_measure_group, double *xdata, double
                         int *nvarGroup, int *maxnvarGroup, int *idxGroup, int *inbag, int *nrnodes)
 {
 
-  // srand(time(NULL));
 
   if(*ngroups==1){
-    // printf("Error: The number of groups must be at least 2\n");
     return;
   }
 
@@ -443,7 +425,6 @@ void R_varImpGroup_Reg( double *permutation_measure_group, double *xdata, double
     mseBefore /= nOOB;
 
     if(nOOB==0){
-      // printf("Error: No OOB samples. Rerun with more trees.\n");
       return;
     }
 
@@ -468,8 +449,6 @@ void R_varImpGroup_Reg( double *permutation_measure_group, double *xdata, double
         for (k = 0; k < *p; ++k){
           if(currentGroup[k]==1){
             tx[itx] = xdata[i * *p + k];
-            // if(itx > sizeTx)
-            //   printf("Warning!\nitx = %d, tx = %.2f, currentGroup[%d] = %d\n", itx, tx[itx], k, currentGroup[k]);
             itx++;
           }
           if (inbag[indexTree * *n + i]==0 && currentGroup[k]==1)
@@ -534,27 +513,3 @@ void R_varImpGroup_Reg( double *permutation_measure_group, double *xdata, double
   free(currentGroup);
   free(idxCurrentGroup);
 }
-
-
-
-
-
-
-
-//
-// Compilation
-//
-
-// gcc -c R_wrapper.c -o R_wrapper.o
-// g++ -shared R_wrapper.o -o R_wrapper.so
-
-//or
-
-// R CMD SHLIB R_wrapper.c
-
-//In R
-// dyn.load("R_wrapper.so")
-
-
-
-
